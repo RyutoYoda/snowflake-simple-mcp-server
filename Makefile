@@ -2,10 +2,10 @@
 
 # Variables
 SNOWSQL_PATH = /Applications/SnowSQL.app/Contents/MacOS/snowsql
-ACCOUNT = CYBERAGENT-INFOSYS_DATA
-USER = S27928
-AUTHENTICATOR = externalbrowser
-ROLE = ACCOUNTADMIN
+ACCOUNT = $(shell source .env && echo $$SNOWSQL_ACCOUNT)
+USER = $(shell source .env && echo $$SNOWSQL_USER)
+AUTHENTICATOR = $(shell source .env && echo $$SNOWSQL_AUTHENTICATOR)
+ROLE = $(shell source .env && echo $$SNOWSQL_ROLE)
 
 # Default target
 .PHONY: help

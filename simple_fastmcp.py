@@ -14,10 +14,10 @@ mcp = FastMCP("Simple Snowflake Server")
 
 # Snowflake configuration
 SNOWFLAKE_CONFIG = {
-    "account": os.getenv("SNOWSQL_ACCOUNT", "CYBERAGENT-INFOSYS_DATA"),
-    "user": os.getenv("SNOWSQL_USER", "S27928"),
+    "account": os.getenv("SNOWSQL_ACCOUNT"),
+    "user": os.getenv("SNOWSQL_USER"),
     "authenticator": os.getenv("SNOWSQL_AUTHENTICATOR", "externalbrowser"),
-    "role": os.getenv("SNOWSQL_ROLE", "ACCOUNTADMIN"),
+    "role": os.getenv("SNOWSQL_ROLE"),
     "warehouse": os.getenv("SNOWSQL_WAREHOUSE"),
     "database": os.getenv("SNOWSQL_DATABASE"),
     "schema": os.getenv("SNOWSQL_SCHEMA"),
@@ -33,6 +33,13 @@ def get_connection():
     
     if _connection is None or _connection.is_closed():
         config = {k: v for k, v in SNOWFLAKE_CONFIG.items() if v is not None}
+        
+        # Check required fields
+        if not config.get("account"):
+            raise ValueError("SNOWSQL_ACCOUNT environment variable is required")
+        if not config.get("user"):
+            raise ValueError("SNOWSQL_USER environment variable is required")
+        
         _connection = snowflake.connector.connect(**config)
     
     return _connection
