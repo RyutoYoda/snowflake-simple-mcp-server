@@ -1,0 +1,1 @@
+# snowflake-simple-mcp-server
