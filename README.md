@@ -1,13 +1,13 @@
-# Snowflake Simple MCP Server
+# Snowflake Simple MCP Server❄️
 
 SnowflakeとClaudeを接続するシンプルなMCP（Model Context Protocol）サーバーです。
 
 ## 特徴
 
-- ✅ FastMCPを使用したシンプルな実装
-- ✅ セッション維持による認証の効率化
-- ✅ Snowflakeのクエリ実行とデータ取得
-- ✅ Claude Desktopとの統合
+-  FastMCPを使用したシンプルな実装
+-  セッション維持による認証の効率化
+-  Snowflakeのクエリ実行とデータ取得
+-  Claude Desktopとの統合
 
 ## セットアップ
 
