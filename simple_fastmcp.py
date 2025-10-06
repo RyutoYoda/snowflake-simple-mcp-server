@@ -53,6 +53,21 @@ def cleanup_connection():
 # Register cleanup function
 atexit.register(cleanup_connection)
 
+@mcp.prompt()
+def snowflake_setup() -> str:
+    """
+    Snowflakeの接続設定プロンプト
+    """
+    return """
+Snowflakeデータベース・スキーマに関する情報
+
+- データベース: データベース名, スキーマ: スキーマ名_1,スキーマ名_2
+
+重要な指示:
+クエリ結果を取得したら、必ず「このデータを可視化しますか？」とユーザーに確認してください。
+可視化する場合は、データの内容に応じて適切なグラフタイプ（棒グラフ、折れ線グラフ、散布図など）を提案してください。
+"""
+
 @mcp.tool()
 def test_connection() -> str:
     """Test if the MCP server is working"""

@@ -43,7 +43,24 @@ SNOWSQL_ROLE=your-role
 
 ### 4. Claude Desktopの設定
 
-Claude Desktopの設定ファイル（`~/Library/Application Support/Claude/claude_desktop_config.json`）に以下を追加：
+Claude Desktopの設定ファイルを編集します：
+
+#### 設定ファイルの場所
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+#### 設定コマンド例（macOS）
+```bash
+# 設定ファイルを開く
+open "~/Library/Application Support/Claude/claude_desktop_config.json"
+
+# またはコマンドラインエディタで編集
+nano "~/Library/Application Support/Claude/claude_desktop_config.json"
+```
+
+#### 設定内容
+以下の内容を追加または編集してください：
 
 ```json
 {
@@ -67,40 +84,6 @@ Claude Desktopの設定ファイル（`~/Library/Application Support/Claude/clau
 - **test_connection**: MCPサーバーの動作確認
 - **execute_query**: Snowflakeでのクエリ実行
 
-## 使用例
-
-### 基本的なクエリ
-
-```sql
--- 現在のユーザーを確認
-SELECT CURRENT_USER();
-
--- データベース一覧
-SHOW DATABASES;
-
--- テーブル一覧
-SHOW TABLES;
-
--- 特定の条件で検索
-SHOW TABLES LIKE '%jamf%';
-```
-
-### データ取得
-
-```sql
--- サンプルデータの取得
-SELECT * FROM your_table LIMIT 10;
-
--- 集計クエリ
-SELECT 
-    DATE_TRUNC('day', created_at) as date,
-    COUNT(*) as count
-FROM your_table
-WHERE created_at >= DATEADD(day, -7, CURRENT_DATE())
-GROUP BY 1
-ORDER BY 1 DESC;
-```
-
 ## トラブルシューティング
 
 ### 認証エラー
@@ -116,6 +99,22 @@ ORDER BY 1 DESC;
 - ログファイルでエラー詳細を確認してください
 
 ## 開発
+
+### Makefileコマンド
+
+```bash
+# 利用可能なコマンドを表示
+make help
+
+# Snowflakeに直接接続
+make connect
+
+# 接続テスト（簡単なクエリを実行）
+make test
+
+# SnowSQLのバージョン確認
+make version
+```
 
 ### テスト実行
 
