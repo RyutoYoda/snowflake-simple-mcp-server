@@ -44,19 +44,10 @@ SNOWSQL_ROLE=your-role
 ### 4. Claude Desktopの設定
 
 Claude Desktopの設定ファイルを編集します：
-
-#### 設定ファイルの場所
-- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`
-- **Linux**: `~/.config/Claude/claude_desktop_config.json`
-
 #### 設定コマンド例（macOS）
 ```bash
 # 設定ファイルを開く
-open "~/Library/Application Support/Claude/claude_desktop_config.json"
-
-# またはコマンドラインエディタで編集
-nano "~/Library/Application Support/Claude/claude_desktop_config.json"
+open ~/Library/Application\ Support/Claude/claude_desktop_config.json
 ```
 
 #### 設定内容
